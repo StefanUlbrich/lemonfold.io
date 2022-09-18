@@ -1,0 +1,103 @@
+\documentclass[english,a4paper,oneside,11pt, DIV=15,parskip=half-]{scrartcl}
+
+
+
+% \usepackage[utf8x]{inputenc} % https://tex.stackexchange.com/a/49613
+\usepackage[utf8]{inputenc} % https://tex.stackexchange.com/a/49613
+\usepackage{graphicx}
+\usepackage{eso-pic}
+
+\usepackage{color}
+\usepackage[hang]{subfigure}
+% \usepackage{bm}  %bold and cursive letters
+
+\usepackage{enumitem} % used in the variables environment
+\usepackage{multicol}
+\usepackage{setspace}
+%\usepackage[round]{natbib}
+\usepackage[normalem]{ulem}
+\usepackage{floatflt}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black
+}
+
+% Sans Serif
+\usepackage[scaled=0.90]{helvet} % Different fonts
+% Typewiter
+\usepackage{courier}
+\usepackage{mathptmx}
+\usepackage[nodayofweek]{datetime}
+%\usepackage{mathpazo} \linespread{1.05}
+
+
+\usepackage[style=ieee,sorting=ynt]{biblatex}
+\bibliography{lemonfold.bib}
+
+
+% https://tex.stackexchange.com/a/219999
+\DeclareFieldFormat{labelnumberwidth}{}
+\setlength{\biblabelsep}{0pt}
+
+
+
+\graphicspath{{./images/}}
+
+\newcommand{\co}[1]{\textcolor{red}{[#1]}}
+\newcommand{\new}[1]{\textcolor{green}{#1}}
+\newcommand{\revised}[1]{\textcolor{blue}{#1}}
+\renewcommand{\refname}{}
+\newcommand\hide[1]{{}}
+
+\renewcommand{\familydefault}{\sfdefault} %everything should be Sans serif
+
+\renewcommand*{\raggedsection}{\centering}
+
+
+\begin{document}
+
+
+
+
+\section*{\huge Publication list}
+
+
+\nocite{*}
+\renewcommand{\url}[1]{\href{#1}{Link}}
+
+% https://tex.stackexchange.com/a/112886
+
+\defbibfilter{books_or_chapters}{
+  type=book or
+  type=inbook
+}
+
+\defbibfilter{conferencelike}{
+  type=conference or
+  type=inproceedings
+  %type=proceedings
+}
+
+\defbibfilter{workshops_or_invited}{
+  type=unpublished or
+  type=proceedings
+}
+
+\defbibfilter{patents}{
+  type=patent
+}
+
+\printbibliography[filter=conferencelike,title={Conferences}]
+\newpage
+\printbibliography[type=article,title={Journals}]
+\printbibliography[filter=books_or_chapters,title={Book chapters}]
+\printbibliography[filter=patents,title={Patents}]
+\printbibliography[filter=workshops_or_invited,title={Invited talks and workshops}]
+
+% \printbibliography
+
+%\end{multicols}
+\end{document}

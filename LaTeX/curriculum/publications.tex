@@ -1,0 +1,77 @@
+\documentclass[english,a4paper,oneside,11pt, DIV=15,parskip=half-]{scrartcl}
+
+% sudo apt install latexmk
+% sudo apt install biber
+% sudo apt install texlive-bibtex-extra
+
+
+% \usepackage[utf8x]{inputenc} % https://tex.stackexchange.com/a/49613
+\usepackage[utf8]{inputenc} % https://tex.stackexchange.com/a/49613
+\usepackage{graphicx}
+\usepackage{eso-pic}
+
+\usepackage{color}
+\usepackage[hang]{subfigure}
+% \usepackage{bm}  %bold and cursive letters
+
+\usepackage{enumitem} % used in the variables environment
+\usepackage{multicol}
+\usepackage{setspace}
+%\usepackage[round]{natbib}
+\usepackage[normalem]{ulem}
+\usepackage{floatflt}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black
+}
+
+% Sans Serif
+\usepackage[scaled=0.90]{helvet} % Different fonts
+% Typewiter
+\usepackage{courier}
+\usepackage{mathptmx}
+\usepackage[nodayofweek]{datetime}
+%\usepackage{mathpazo} \linespread{1.05}
+
+
+\usepackage[style=ieee,sorting=ynt]{biblatex}
+\bibliography{lemonfold.bib}
+
+
+
+\graphicspath{{./images/}}
+
+\newcommand{\co}[1]{\textcolor{red}{[#1]}}
+\newcommand{\new}[1]{\textcolor{green}{#1}}
+\newcommand{\revised}[1]{\textcolor{blue}{#1}}
+\renewcommand{\refname}{}
+\newcommand\hide[1]{{}}
+
+\renewcommand{\familydefault}{\sfdefault} %everything should be Sans serif
+
+\renewcommand*{\raggedsection}{\centering}
+
+
+
+\begin{document}
+
+
+
+
+
+\section*{Publications and talks}
+
+\renewcommand{\section}[2]{} % Deletes how Sections are defined (custom heading)
+%\begin{multicols}{2}
+
+
+\nocite{*}
+
+\renewcommand{\url}[1]{\href{#1}{Link}}
+\printbibliography
+
+%\end{multicols}
+\end{document}

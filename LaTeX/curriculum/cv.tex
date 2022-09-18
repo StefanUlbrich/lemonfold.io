@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CV
+% uses biblatex (https://www.overleaf.com/learn/latex/bibliography_management_with_biblatex)
+% and biber (https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber)
+% just call `biber Schriftenverzeichnis' but the VSCode plugin is smart enough
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\documentclass[english,a4paper,oneside,11pt, DIV=15,parskip=half-]{scrartcl}
+
+
+% Setup the headers and footers
+\usepackage{lastpage}
+\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+\usepackage[nodayofweek]{datetime}
+
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+
+\renewcommand*{\headfont}{\normalfont}
+\ihead{CV First Last}
+\ifoot{\monthyeardate\today}
+\cfoot{}
+\ofoot{\thepage~/ \pageref{LastPage}}
+
+% done
+
+
+% Setup additional packages
+\usepackage[utf8]{inputenc} % https://tex.stackexchange.com/a/49613 -> don't use utf8x
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage[english]{babel}
+
+\usepackage{color}
+\usepackage[hang]{subfigure}
+% \usepackage{bm}  %bold and cursive letters
+
+\usepackage{enumitem} % used in the variables environment
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage[normalem]{ulem}
+\usepackage{floatflt}
+\usepackage{hyperref}
+\usepackage{tabulary}
+
+\hypersetup{%
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black
+}
+
+% Sans Serif fonts
+\usepackage[scaled=0.90]{helvet} % Different fonts
+% Typewiter
+\usepackage{courier}
+\usepackage{mathptmx}
+\renewcommand{\familydefault}{\sfdefault} %everything should be Sans serif
+%\usepackage{mathpazo} \linespread{1.05}
+
+% References with biblatex
+\usepackage[style=ieee,sorting=ynt]{biblatex}
+\bibliography{lemonfold.bib}
+% \usepackage[style=ieee,sorting=none]{bibla­tex}
+
+
+% Remove numbers from CV bibliography https://tex.stackexchange.com/a/219999
+\DeclareFieldFormat{labelnumberwidth}{}
+\setlength{\biblabelsep}{0pt}
+
+% https://tex.stackexchange.com/a/245054
+\AtEveryBibitem{\clearfield{pages}}
+\AtEveryBibitem{\clearfield{address}}
+\AtEveryBibitem{\clearfield{month}}
+
+
+
+
+\graphicspath{{./images/}}
+
+% Spacing between table rows
+\setlength{\tabcolsep}{20pt}
+\renewcommand{\arraystretch}{1.5}
+
+
+
+\begin{document}
+
+% Custom titlepage
+\begin{titlepage}
+  {\raggedleft \huge \textsc{ Curriculum Vitae}\par\vspace{1.5cm}}
+  {\centering   \includegraphics[width=0.95\textwidth]{potrait_sm}\par\vspace{1.5cm}}
+  { \Large First last \par \vspace{0.5cm} }
+  { Month day\textsuperscript{th}, year\\, City Country \par \vspace{0.5cm} }
+  % Uncomment to remove left border
+  % \begin{tabulary}{\textwidth}{@{}p{2.5cm}L}
+  \begin{tabulary}{\textwidth}{|p{2.5cm}L}
+    Nationality & XXX \\
+    Address & XXX \newline ZIP Hometown \newline Country \\
+    Phone & +1 phone number \\
+    E-Mail & \href{mailto:First.last@mail.com}{First.last@mail.com}
+  \end{tabulary}
+\end{titlepage}
+
+\section*{About}
+
+\begin{onehalfspace}
+
+  First name is a senior research scientist.
+\end{onehalfspace}
+
+\section*{Education}
+\begin{tabulary}{\textwidth}{|p{2.5cm}L}
+2022 & PhD thesis
+  \newline \textit{``Sensorimotor Learning for an Artificial Body Schema on Humanoid Robots''}
+  \newline Supervisor: Prof. Dr. First Last,
+  \newline Co-supervisor: Prof. Dr. First Last (UXX, Country)
+  \newline
+  \newline Final grade: Excellent (1.0), US equivalent: A(4.0)
+  \newline \\
+2021 &  Master degree \newline \\
+\end{tabulary}
+
+\section*{Professional and Academic Experience}
+\begin{tabulary}{\textwidth}{|p{2.5cm}L}
+2020 – present  & Some jobtitle
+  \newline Some Company, City, Country \\
+\end{tabulary}
+
+\section*{Research projects}
+
+\begin{tabulary}{\textwidth}{|p{2.5cm}L}
+2017 – 2020 &  \textit{“CoolProj"} (National) \newline
+Research program \textit{“Cool new projects“}, Funding body \\
+\end{tabulary}
+
+\section*{Language skills}
+
+\begin{tabulary}{\textwidth}{|p{2.5cm}L}
+English &
+Proficient \\
+\end{tabulary}
+
+\section*{Computer skills}
+\begin{tabulary}{\textwidth}{|p{2.5cm}L}
+Programming & Proficient in Python, Typescript, C++ and Matlab. Beginner in Rust \\
+Software & Proficient in Office, LaTeX, Blender, Linux and MacOS
+\end{tabulary}
+
+\section*{Acknowledgements}
+\begin{tabulary}{\textwidth}{|p{2.5cm}L}
+2017 & Best paper award here \\
+& Best paper award there
+\end{tabulary}
+
+\section*{Personal interests}
+
+Sleeping, eating and breathing
+
+\newpage
+
+
+% Bilbliography separated by type
+\section*{Publication list}
+
+% Include all publications
+\nocite{*}
+\renewcommand{\url}[1]{\href{#1}{Link}}
+
+% https://tex.stackexchange.com/a/112886
+\defbibfilter{books_or_chapters}{
+  type=book or
+  type=inbook
+}
+
+\defbibfilter{conferencelike}{
+  type=conference or
+  type=inproceedings
+  %type=proceedings
+}
+
+\defbibfilter{workshops_or_invited}{
+  type=unpublished or
+  type=proceedings
+}
+
+
+
+\printbibliography[filter=conferencelike,title={Conferences},heading=subbibliography]
+\newpage
+\printbibliography[type=article,title={Journals},heading=subbibliography]
+\printbibliography[filter=books_or_chapters,title={Book chapters},heading=subbibliography]
+\printbibliography[filter=workshops_or_invited,title={Invited talks and workshops},heading=subbibliography]
+
+\end{document}

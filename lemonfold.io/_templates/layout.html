@@ -1,0 +1,39 @@
+{%- extends "pydata_sphinx_theme/layout.html" %}
+
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.5/dist/cookieconsent.css" media="print" onload="this.media='all'">
+{% endblock %}
+
+{% block extrahead %}
+{{ super() }}
+<!-- <meta HTTP-EQUIV="refre sh" CONTENT="30"/> -->
+{% endblock %}
+
+{% block docs_body %}
+{{ super() }}
+<!-- Add a comment box underneath the page's content -->
+<script  type="text/plain"
+data-cookiecategory="discussion"
+src="https://giscus.app/client.js"
+data-repo="GitHuser/repo"
+data-repo-id="XXXXXXXXX"
+data-category="giscus"
+data-category-id="XXXXXXXXXXX"
+data-mapping="pathname"
+data-strict="0"
+data-reactions-enabled="1"
+data-emit-metadata="0"
+data-input-position="bottom"
+data-theme="light"
+data-lang="en"
+crossorigin="anonymous"
+async>Discussion disbaled (privacy setting)</script>
+{% endblock %}
+
+{% block scripts_end %}
+{{ super() }}
+<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.5/dist/cookieconsent.js"></script>
+<script defer src="{{ pathto('_static/cookieconsent-init.js', 1) }}"></script>
+<script type="text/plain" data-cookiecategory="analytics" defer data-domain="domain.io" src="https://analytics.domain.io/js/plausible.js"></script>
+{% endblock %}

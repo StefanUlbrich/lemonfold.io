@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "James-Yu.latex-workshop",
+        "streetsidesoftware.code-spell-checker",
+        "ms-python.python",
+        "DavidAnson.vscode-markdownlint",
+        "eamodio.gitlens",
+        "donjayamanne.githistory",
+        "ExecutableBookProject.myst-highlight"
+    ]
+}

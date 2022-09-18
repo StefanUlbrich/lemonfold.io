@@ -1,0 +1,46 @@
+// Platzieren Sie Ihre Einstellungen in dieser Datei, um Standard- und Benutzereinstellungen zu überschreiben.
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.aux": true,
+        "**/*.synctex.gz": true,
+        "**/*.fls": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.log": true,
+        "**/*.run.xml": true,
+        "**/*.bcf": true,
+        // "**/*.pdf": true,
+    },
+    "latex-workshop.linting.chktex.enabled": true,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.bind.enter.key": false,
+    "[markdown]": {
+        "editor.tabSize": 4
+    },
+    "markdownlint.config": {
+        "default": true,
+        "MD007": { "indent": 4, },
+        "MD046": {"style": "fenced"}
+    },
+    "files.autoSave": "onFocusChange",
+    "editor.snippetSuggestions": "inline",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggest.showSnippets": true,
+    "editor.tabCompletion": "on",
+    "editor.hover.delay": 1000,
+    "editor.fontLigatures": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": false,
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.guessTypes": true,
+    "autoDocstring.startOnNewLine": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.terminal.activateEnvironment": false
+}

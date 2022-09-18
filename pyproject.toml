@@ -1,0 +1,76 @@
+[tool.poetry]
+name = "lemonfold-io"
+version = "0.1.0"
+description = "Static blog for Lemonfold.io"
+authors = ["First Last <first.last@mail.com>"]
+readme = "README.md"
+
+classifiers = [
+   "Private :: Do Not Upload", # https://github.com/sdispater/poetry/issues/302#issuecomment-467805206
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+Sphinx = "<6"
+myst-parser = "^0.18.0"
+ablog = "0.10.28"
+sphinx_design = "^0.2.0"
+PyYAML = "^6.0"
+sphinxcontrib-bibtex = "^2.4.2"
+docutils = "0.17.1" # Think I have to fixate this or else sphinx-bibtex fails
+pydata-sphinx-theme = "^0.10.0"
+sphinx-sitemap = "^2.2.0"
+
+[tool.poetry.group.lab]
+optional = true
+
+[tool.poetry.group.lab.dependencies]
+numpy = "^1.23.2"
+scipy = "^1.9.0"
+sklearn = "^0.0"
+seaborn = "^0.11.2"
+pandas = "^1.4.3"
+ipykernel = "^6.15.1"
+attrs = "^22.1.0"
+nb-black = "^1.0.7"
+ipympl = "^0.9.1"
+tqdm = "^4.64.0"
+cattrs = "^22.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^0.971"
+black = "^22.6.0"
+pylint = "^2.15.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# did not get this to run :-(
+[tool.poetry.scripts]
+deploy = { reference = "lemonfold.io/test.sh", type = "file" }
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_configs = true
+namespace_packages = true
+mypy_path = "src"
+show_error_codes = true
+strict = true
+plugins = ["numpy.typing.mypy_plugin"]
+
+[tool.black]
+line-length = 120
+target_version = ["py310"]
+
+[tool.pylint.format]
+max-line-length=120
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "missing-module-docstring"
+]
+
+[tool.pylint.basic]
+good-names=['R','i','j','k','ex','Run','_', 'X', 'Y', 'Z', 'x', 'y', 'z', 'XX', 'YY', 'ZZ']
